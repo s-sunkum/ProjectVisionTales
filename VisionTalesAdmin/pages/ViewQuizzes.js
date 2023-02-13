@@ -11,7 +11,7 @@ const ViewQuizzes = ({ navigation }) => {
 
   async function getQuizzes() {
     try {
-      const response = await fetch("https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/titles");
+      const response = await fetch("https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/quizzes/titles");
       const json = await response.json();
       setFlatListItems(json);
       console.log("here", setFlatListItems);
