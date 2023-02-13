@@ -21,7 +21,7 @@ const AddQuiz = ({ navigation }) => {
   let refCorrect = useRef([[false, false]]);
   let questions = [];
 
-  let setInputValue = (index: number, value: string) => {
+  let setInputValue = (index, value) => {
     const inputs = refInputs.current;
     inputs[index] = value;
     setTextValue(value);
@@ -154,9 +154,10 @@ const AddQuiz = ({ navigation }) => {
       },
       body: JSON.stringify({
         title: quizTitle,
-        questions: refInputs.current,
-        choices: refAnswers.current,
-        correct: refCorrect.current,
+        another: "test",
+        //questions: refInputs.current,
+        //choices: refAnswers.current,
+        //correct: refCorrect.current,
       })
     })
       .then(response => response.json())
@@ -196,13 +197,6 @@ const AddQuiz = ({ navigation }) => {
                   style={{ padding: 10 }}
                 />
               </View>
-              {/* <MainTextInput
-                placeholder="Enter Title"
-                onChangeText={
-                  (quizTitle) => setQuizTitle(quizTitle)
-                }
-                style={{ padding: 10, backgroundColor: 'red'}}
-              /> */}
 
               {populateQuestions()}
               {questions.map(question => question)}
