@@ -25,7 +25,7 @@ const DeleteUser = ({ navigation, route }) => {
   let delete_video = () => {
     console.log(id_video);
     //Delete video from database
-    const delete_url = `https://2jwoowlka2.execute-api.us-east-1.amazonaws.com/videos/${route.params.yt_id}`
+    const delete_url = `https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/videos/${route.params.yt_id}`
     fetch(delete_url, {
       method: 'DELETE',
       headers: {
