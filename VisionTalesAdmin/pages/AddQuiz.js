@@ -145,7 +145,9 @@ const AddQuiz = ({ navigation }) => {
         }
       }
     }
-
+    console.log(refInputs.current);
+    console.log(refAnswers.current);
+    console.log(refCorrect.current);
     fetch("https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/quizzes", {
       method: 'PUT',
       headers: {
@@ -154,10 +156,11 @@ const AddQuiz = ({ navigation }) => {
       },
       body: JSON.stringify({
         title: quizTitle,
-        another: "test",
-        //questions: refInputs.current,
-        //choices: refAnswers.current,
-        //correct: refCorrect.current,
+        quiz: {
+          questions: refInputs.current,
+          choices: refAnswers.current,
+          correct: refCorrect.current,
+        }
       })
     })
       .then(response => response.json())
