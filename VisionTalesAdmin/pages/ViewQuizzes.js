@@ -14,7 +14,6 @@ const ViewQuizzes = ({ navigation }) => {
       const response = await fetch("https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/quizzes/titles");
       const json = await response.json();
       setFlatListItems(json);
-      console.log("here", setFlatListItems);
     } 
     catch (error) {
       console.log(error);
@@ -25,12 +24,12 @@ const ViewQuizzes = ({ navigation }) => {
     try {
       const response = await fetch(`https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/quizzes/${title}`);
       const json = await response.json();
-      const quiz = json.Item;
-      
+      const quiz = json;
+      console.log(quiz.title);
       quizTitle = quiz.title;
-      questions = quiz.questions;
-      choices = quiz.choices;
-      correct = quiz.correct;
+      questions = quiz.quiz.questions;
+      choices = quiz.quiz.choices;
+      correct = quiz.quiz.correct;
 
       console.log("made call: ", quizTitle);
     }
