@@ -334,6 +334,12 @@ const HomeScreen = ({ navigation }) => {
           }
         />
         <NavButton
+          title="Visit Our Homepage!"
+          customClick={() =>
+            Linking.openURL("https://www.cherisheyesight.org/")
+          }
+        />
+        <NavButton
           title="Donate"
           customClick={() => navigation.navigate("Donate")}
         />
