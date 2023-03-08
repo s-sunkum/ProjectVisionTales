@@ -209,6 +209,7 @@ const App = () => {
             },
           }}
         />
+
         <Stack.Screen
           name="Donate"
           component={Donate}
@@ -223,6 +224,7 @@ const App = () => {
             },
           }}
         />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
