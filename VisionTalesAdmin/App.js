@@ -6,6 +6,8 @@ import { Button, View, Text, Image} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import HomeScreen from "./pages/HomeScreen";
 import ViewTopics from "./pages/ViewTopics";
 import ViewVideos from "./pages/ViewVideos";
@@ -29,7 +31,51 @@ const headerColor = "#dbb42b";
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen">
+      <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen
+          name="Sign Out"
+          component={Login}
+          options={{
+            //title: "Vision Tales",
+            headerTitle: (props) => (
+              //title: "Home", //Set Header Title
+              <Image
+                style={{ width: 200, height: 50 }}
+                source={require('./assets/eyesight_logo.png')}
+                resizeMode='contain'
+              />
+            ),
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{
+            //title: "Vision Tales",
+            headerTitle: (props) => (
+              //title: "Home", //Set Header Title
+              <Image
+                style={{ width: 200, height: 50 }}
+                source={require('./assets/eyesight_logo.png')}
+                resizeMode='contain'
+              />
+            ),
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
