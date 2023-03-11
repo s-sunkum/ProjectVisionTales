@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 
 import * as React from "react";
-import { Button, View, Text, Image} from "react-native";
+import { Button, View, Text, Image } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -19,6 +19,7 @@ import EditVideoQuiz from "./pages/EditVideoQuiz";
 import Donate from "./pages/Donate";
 import ViewQuiz from "./pages/ViewQuiz";
 import DemographicQuiz from "./pages/DemographicQuiz";
+import SocialEyes from "./pages/SocialEyes";
 
 const Stack = createStackNavigator();
 
@@ -39,8 +40,8 @@ const App = () => {
               //title: "Home", //Set Header Title
               <Image
                 style={{ width: 200, height: 50 }}
-                source={require('./assets/eyesight_logo.png')}
-                resizeMode='contain'
+                source={require("./assets/eyesight_logo.png")}
+                resizeMode="contain"
               />
             ),
             headerStyle: {
@@ -214,6 +215,20 @@ const App = () => {
           component={Donate}
           options={{
             title: "Donate", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+        <Stack.Screen
+          name="SocialEyes"
+          component={SocialEyes}
+          options={{
+            title: "SocialEYES", //Set Header Title
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
             },
