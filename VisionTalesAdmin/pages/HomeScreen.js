@@ -49,9 +49,9 @@ const HomeScreen = ({ navigation }) => {
             );
           }
         },
-	function (tx, error) {
-	  console.log(error);
-	}
+        function (tx, error) {
+          console.log(error);
+        }
       );
     });
 
@@ -89,8 +89,7 @@ const HomeScreen = ({ navigation }) => {
             txn.executeSql(
               "CREATE TABLE IF NOT EXISTS table_demographics(d_id INTEGER PRIMARY KEY, location VARCHAR(50), gender VARCHAR(20), age VARCHAR(255))",
               [],
-              (txn, res) => {
-              },
+              (txn, res) => {},
               (txn, error) => {
                 console.log(error);
               }
@@ -110,8 +109,7 @@ const HomeScreen = ({ navigation }) => {
             txn.executeSql(
               "INSERT INTO table_demographics (d_id, location, gender, age) VALUES(1,'NA','NA','NA')",
               [],
-              (txn, res) => {;
-              },
+              (txn, res) => {},
               (txn, error) => {
                 console.log(error);
               }
@@ -128,28 +126,21 @@ const HomeScreen = ({ navigation }) => {
         [],
         function (txn, res) {
           if (res.rows.length >= 0) {
-        
             txn.executeSql(
               "DROP TABLE IF EXISTS table_quiz",
               [],
-              (txn, res) => {
-                
-              },
+              (txn, res) => {},
               (txn, error) => {
                 console.log(error);
-                
               }
             );
             // txn.executeSql("PRAGMA foreign_keys = ON");
             txn.executeSql(
               "CREATE TABLE IF NOT EXISTS table_quiz(quiz_id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(20), video_id INTEGER NOT NULL, FOREIGN KEY (video_id) REFERENCES table_video (video_id))",
               [],
-              (txn, response) => {
-                
-              },
+              (txn, response) => {},
               (txn, error) => {
                 console.log(error);
-                
               }
             );
           }
@@ -181,7 +172,6 @@ const HomeScreen = ({ navigation }) => {
         "SELECT name FROM sqlite_master WHERE type='table' AND name='table_question_choice'",
         [],
         function (tx, res) {
-          
           if (res.rows.length >= 0) {
             txn.executeSql("DROP TABLE IF EXISTS table_question_choice", []);
             // isAnswer: 0 means false/ 1 means true
@@ -209,8 +199,6 @@ const HomeScreen = ({ navigation }) => {
               ],
               (txn, resultsQuiz) => {
                 if (resultsQuiz.rowsAffected > 0) {
-                  
-
                   // If the questions object in quiz isn't empty
                   if (videoData[i].quiz.questions) {
                     for (
@@ -220,10 +208,7 @@ const HomeScreen = ({ navigation }) => {
                     ) {
                       txn.executeSql(
                         "INSERT INTO table_question (content, quiz_id) VALUES (?, ?)",
-                        [
-                          videoData[i].quiz.questions[j],
-                          resultsQuiz.insertId,
-                        ],
+                        [videoData[i].quiz.questions[j], resultsQuiz.insertId],
                         (txn, resultsQuestion) => {
                           // Now, upload choices for question, if question download is successful
                           if (resultsQuestion.rowsAffected > 0) {
@@ -273,7 +258,6 @@ const HomeScreen = ({ navigation }) => {
     // const [demoInfoFilled, setDemoInfoFilled] = useState();
     console.log("---------- BEGIN --------------");
     await getVideos();
-    
 
     // Test for quiz input
     db.transaction(function (txn) {
@@ -348,6 +332,10 @@ const HomeScreen = ({ navigation }) => {
           customClick={() =>
             Linking.openURL("https://www.cherisheyesight.org/contact")
           }
+        />
+        <NavButton
+          title="SocialEYES"
+          customClick={() => navigation.navigate("SocialEyes")}
         />
         <NavButton
           title="Change Your Profile"
