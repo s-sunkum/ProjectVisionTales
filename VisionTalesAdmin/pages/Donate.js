@@ -60,8 +60,8 @@ const Donate = ({ navigation }) => {
               }
             >
               <Image
-                style={styles.paypalImage}
-                source={require("./images/paypallogo.png")}
+                style={styles.cashappImage}
+                source={require("./images/cashlogo.png")}
               ></Image>
             </TouchableOpacity>
           </View>
@@ -116,9 +116,9 @@ const styles = StyleSheet.create({
     width: 300,
     height: 200,
   },
-  paypalImage: {
-    width: 300,
-    height: 180,
+  cashappImage: {
+    width: 200,
+    height: 200,
   },
 });
 
