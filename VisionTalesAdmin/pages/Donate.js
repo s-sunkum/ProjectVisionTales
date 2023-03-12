@@ -45,7 +45,8 @@ const Donate = ({ navigation }) => {
             <MainText text="Donate less than $250!" />
             <TouchableOpacity
               onPress={() =>
-                Linking.openURL("https://urlgeni.us/venmo/cherisheyesight")
+                //Linking.openURL("https://urlgeni.us/venmo/cherisheyesight")
+                Linking.openURL("https://account.venmo.com/u/cherisheyesight")
               }
             >
               <Image
