@@ -1,7 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import NavButton from "./components/NavButton";
 import MainTextInput from './components/MainTextInput';
+import MainText from './components/MainText'
 import axios from "axios";
+import CountryPicker from 'react-native-country-picker-modal';
+import { CountrySelection } from 'react-native-country-list';
+import { SelectList } from 'react-native-dropdown-select-list';
+import countryData from './components/CountryData';
+import ageRanges from './components/AgeRanges';
 import {
   View,
   ScrollView,
@@ -19,12 +25,27 @@ const Register = ({ navigation }) => {
     let [password, setPassword] = useState('');
     let [name, setName] = useState('');
     let [email, setEmail] = useState('');
+    let [location, setLocation] = useState('');
+    let [age, setAge] = useState("");
+    let [gender,setGender] = useState("");
+    const genderChoices = [
+      {key:'1', value:'Male'},
+      {key:'2', value:'Female'},
+      {key:'3', value:'Non Binary'},
+      {key:'4', value:'Prefer Not To Say'}
+    ]
+
+
     let authenticate = () => {
+        location = location.substring(0,location.length - 4);
         const requestBody = {
             name: name,
             email: email,
             username: username,
-            password: password
+            password: password,
+            origin: location,
+            age: age,
+            gender: gender
         }
         axios.post(registerUrl,requestBody).then(response => {
             alert("Account Registered!");
@@ -68,8 +89,27 @@ const Register = ({ navigation }) => {
                 }
                 style={{ padding: 10 }}
             />
+            <SelectList 
+              setSelected={(location) => setLocation(location)} 
+              data={countryData} 
+              save="value"
+              style={{ padding: 10 }}
+            />
+            <SelectList 
+              setSelected={(age) => setAge(age)} 
+              data={ageRanges} 
+              save="value"
+              style={{ padding: 10 }}
+            />
+            <SelectList 
+              setSelected={(gender) => setGender(gender)} 
+              data={genderChoices} 
+              save="value"
+              style={{ padding: 10 }}
+            />
             <NavButton
               title="Register"
+              
               customClick={() => authenticate()}
             />
           </ScrollView>

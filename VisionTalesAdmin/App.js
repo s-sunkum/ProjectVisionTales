@@ -256,6 +256,7 @@ const App = () => {
             },
           }}
         />
+
         <Stack.Screen
           name="Donate"
           component={Donate}

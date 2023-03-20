@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import NavButton from "./components/NavButton";
 import MainTextInput from './components/MainTextInput';
-
+import PasswordTextInput from './components/PasswordTextInput';
 import axios from "axios";
 import {
   View,
@@ -43,7 +43,7 @@ const Login = ({ navigation }) => {
                 }
                 style={{ padding: 10 }}
             />
-            <MainTextInput
+            <PasswordTextInput
                 placeholder="Enter Password"
                 onChangeText={
                   (password) => setPassword(password)
