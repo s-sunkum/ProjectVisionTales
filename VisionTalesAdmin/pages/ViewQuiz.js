@@ -12,7 +12,6 @@ const ViewQuiz = ({ navigation, route }) => {
     const [correct, setCorrect] = useState(route.params.correct);
 
     const [qNum, setqNum] = useState(0);
-
     /* Not used rn, only used if FlatList is rendered */
     let listViewItemSeparator = () => {
         return (
@@ -46,7 +45,11 @@ const ViewQuiz = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            
             <View style={{ flex: 1, backgroundColor: '#dbb42b'}}>
+            <Text>
+              {"\n"}
+            </Text>
             {choices && correct && questions && (
                 <Quiz
                     qNum={qNum}

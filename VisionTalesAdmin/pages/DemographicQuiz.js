@@ -75,7 +75,7 @@ const DemographicQuiz = ({ navigation, route }) => {
 
                     // If we answered the last question
                     if (qNum >= choices.length - 1) {
-			    console.log("working");
+			    console.log(data);
 		      // Begin deleting Table
 		      /*db.transaction(function (txn) {
       			txn.executeSql("DELETE FROM table_demographics WHERE EXISTS (SELECT * FROM table_demographics)", []);
@@ -105,7 +105,7 @@ const DemographicQuiz = ({ navigation, route }) => {
                             }
                           },
 			  (txn, error) => {
-			    console.log(error);
+			    
 			  }
                         );
                       });

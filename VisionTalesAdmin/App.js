@@ -1,11 +1,13 @@
 import "react-native-gesture-handler";
 
 import * as React from "react";
-import { Button, View, Text, Image} from "react-native";
+import { Button, View, Text, Image } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import HomeScreen from "./pages/HomeScreen";
 import ViewTopics from "./pages/ViewTopics";
 import ViewVideos from "./pages/ViewVideos";
@@ -18,7 +20,11 @@ import EditQuiz from "./pages/EditQuiz";
 import EditVideoQuiz from "./pages/EditVideoQuiz";
 import Donate from "./pages/Donate";
 import ViewQuiz from "./pages/ViewQuiz";
-import DemographicQuiz from "./pages/DemographicQuiz";
+import SocialEyes from "./pages/SocialEyes";
+import UserHomeScreen from "./pages/UserHomeScreen";
+import UserViewTopics from "./pages/UserViewTopics";
+import UserViewVideos from "./pages/UserViewVideos";
+import UserViewQuizzes from "./pages/UserViewQuizzes";
 
 const Stack = createStackNavigator();
 
@@ -29,7 +35,51 @@ const headerColor = "#dbb42b";
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen">
+      <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen
+          name="Sign Out"
+          component={Login}
+          options={{
+            //title: "Vision Tales",
+            headerTitle: (props) => (
+              //title: "Home", //Set Header Title
+              <Image
+                style={{ width: 200, height: 50 }}
+                source={require('./assets/eyesight_logo.png')}
+                resizeMode='contain'
+              />
+            ),
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{
+            //title: "Vision Tales",
+            headerTitle: (props) => (
+              //title: "Home", //Set Header Title
+              <Image
+                style={{ width: 200, height: 50 }}
+                source={require('./assets/eyesight_logo.png')}
+                resizeMode='contain'
+              />
+            ),
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
@@ -39,8 +89,8 @@ const App = () => {
               //title: "Home", //Set Header Title
               <Image
                 style={{ width: 200, height: 50 }}
-                source={require('./assets/eyesight_logo.png')}
-                resizeMode='contain'
+                source={require("./assets/eyesight_logo.png")}
+                resizeMode="contain"
               />
             ),
             headerStyle: {
@@ -195,11 +245,12 @@ const App = () => {
           }}
         />
 
+
         <Stack.Screen
-          name="DemographicQuiz"
-          component={DemographicQuiz}
+          name="Donate"
+          component={Donate}
           options={{
-            title: "Your Information", //Set Header Title
+            title: "Donate", //Set Header Title
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
             },
@@ -210,10 +261,68 @@ const App = () => {
           }}
         />
         <Stack.Screen
-          name="Donate"
-          component={Donate}
+          name="SocialEyes"
+          component={SocialEyes}
           options={{
-            title: "Donate", //Set Header Title
+            title: "SocialEYES", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+        <Stack.Screen
+          name="UserHomeScreen"
+          component={UserHomeScreen}
+          options={{
+            title: "UserHomeScreen", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="UserViewTopics"
+          component={UserViewTopics}
+          options={{
+            title: "UserViewTopics", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="UserViewVideos"
+          component={UserViewVideos}
+          options={{
+            title: "UserViewVideos", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+        <Stack.Screen
+          name="UserViewQuizzes"
+          component={UserViewQuizzes}
+          options={{
+            title: "UserViewQuizzes", //Set Header Title
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
             },
