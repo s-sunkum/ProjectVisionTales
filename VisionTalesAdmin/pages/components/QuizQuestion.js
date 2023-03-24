@@ -13,7 +13,23 @@ const Quiz = (props) => {
   }
   return (
     <SafeAreaView>
-      <Text style={{ marginLeft: 'auto', marginRight: 'auto', fontSize: 20 }}>{props.questions[props.qNum]}</Text>
+      <Text 
+        style={{ 
+          padding: 25,
+          marginTop: '8%',
+          marginLeft: "10%",
+          marginRight: "10%",
+          color: '#ecebeb',
+          fontSize: 24,
+          fontWeight: '700', 
+          backgroundColor: '#91781c'}}>
+
+          {props.questions[props.qNum]}
+
+      </Text>
+      <Text>
+              {"\n"}
+            </Text>
       {props.choices[props.qNum] &&
         props.choices[props.qNum].map((item, key) => (
           <Pressable onPress={() => {

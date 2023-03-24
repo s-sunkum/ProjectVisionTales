@@ -24,6 +24,7 @@ import SocialEyes from "./pages/SocialEyes";
 import UserHomeScreen from "./pages/UserHomeScreen";
 import UserViewTopics from "./pages/UserViewTopics";
 import UserViewVideos from "./pages/UserViewVideos";
+import UserViewQuizzes from "./pages/UserViewQuizzes";
 
 const Stack = createStackNavigator();
 
@@ -308,6 +309,20 @@ const App = () => {
           component={UserViewVideos}
           options={{
             title: "UserViewVideos", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+        <Stack.Screen
+          name="UserViewQuizzes"
+          component={UserViewQuizzes}
+          options={{
+            title: "UserViewQuizzes", //Set Header Title
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
             },

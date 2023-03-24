@@ -297,7 +297,7 @@ const UserHomeScreen = ({ navigation }) => {
         />
         <LargeNavButton
           title="Test Your EyeQ"
-          customClick={() => navigation.navigate("ViewQuizzes")}
+          customClick={() => navigation.navigate("UserViewQuizzes")}
         />
         <Text>
               {"\n"}

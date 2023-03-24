@@ -44,20 +44,26 @@ const Login = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
           <ScrollView style={{ flex: 1, backgroundColor: "#dbb42b" }}>
+          <Text>
+              {"\n"}
+            </Text>
             <MainTextInput
                 placeholder="Enter Username"
                 onChangeText={
                   (username) => setUsername(username)
                 }
-                style={{ padding: 10 }}
+                style={{ padding: 10, backgroundColor: "#ffffff" }}
             />
             <PasswordTextInput
                 placeholder="Enter Password"
                 onChangeText={
                   (password) => setPassword(password)
                 }
-                style={{ padding: 10 }}
+                style={{ padding: 10, backgroundColor: "#ffffff"  }}
             />
+            <Text>
+              {"\n"}
+            </Text>
             <NavButton
               title="Log In"
               customClick={() => authenticate()}
