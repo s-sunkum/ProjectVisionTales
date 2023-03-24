@@ -20,7 +20,6 @@ import EditQuiz from "./pages/EditQuiz";
 import EditVideoQuiz from "./pages/EditVideoQuiz";
 import Donate from "./pages/Donate";
 import ViewQuiz from "./pages/ViewQuiz";
-import DemographicQuiz from "./pages/DemographicQuiz";
 import SocialEyes from "./pages/SocialEyes";
 
 const Stack = createStackNavigator();
@@ -242,20 +241,6 @@ const App = () => {
           }}
         />
 
-        <Stack.Screen
-          name="DemographicQuiz"
-          component={DemographicQuiz}
-          options={{
-            title: "Your Information", //Set Header Title
-            headerStyle: {
-              backgroundColor: bkColor, //Set Header color
-            },
-            headerTintColor: headerColor, //Set Header text color
-            headerTitleStyle: {
-              fontWeight: "bold", //Set Header text style
-            },
-          }}
-        />
 
         <Stack.Screen
           name="Donate"

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import NavButton from "./components/NavButton";
 import MainTextInput from './components/MainTextInput';
 import PasswordTextInput from './components/PasswordTextInput';
+import {name, age, gender, country, setName,setAge, setGender, setCountry } from './components/UserSession';
 import axios from "axios";
 import {
   View,
@@ -19,11 +20,16 @@ const Login = ({ navigation }) => {
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
     let authenticate = () => {
+        const ag = null;
         const requestBody = {
             username: username,
             password: password
         }
         axios.post(loginUrl,requestBody).then(response => {
+            setName(response.data.user.name);
+            setAge(response.data.user.age);
+            setGender(response.data.user.gender);
+            setCountry(response.data.user.country);
             navigation.navigate("HomeScreen");
         }).catch(error => {
             if(error.response.status === 401 || error.response.status === 403){
@@ -32,6 +38,8 @@ const Login = ({ navigation }) => {
                 alert("Network Error");
             }
         })
+        
+        
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, Text, View, SafeAreaView, Alert } from 'react-native';
 import NavButton from './components/NavButton';
-
+import { quizScore, incrementScore, setQuizScore } from "./components/QuizScore";
 const ViewQuizzes = ({ navigation }) => {
   let [flatListItems, setFlatListItems] = useState([]);
   let quizTitle = '';
@@ -87,6 +87,7 @@ const ViewQuizzes = ({ navigation }) => {
 	<NavButton
           title={item.title}
           customClick={async () => {
+            setQuizScore(0);
             await getQuizTitle(item.title);
 	    navigation.navigate("ViewQuiz", {
               id: item.title,

@@ -6,7 +6,7 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 import NavButton from './components/NavButton';
 import ViewQuiz from './ViewQuiz';
 import Quiz from './components/QuizQuestion';
-
+import { quizScore, incrementScore, setQuizScore } from "./components/QuizScore";
 var db = SQLite.openDatabase("VisionTalesDB.db");
 
 const ViewVideos = ({ route, navigation }) => {
@@ -141,6 +141,7 @@ const ViewVideos = ({ route, navigation }) => {
           title="Take Quiz"
           customClick={async () => {
             await getQuiz(item.yt_id);
+            setQuizScore(0);
             navigation.navigate("ViewQuiz", {
               id: item.yt_id,
               questions: questions,

@@ -2,31 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, FlatList, Text, StatusBar, Pressable, StyleSheet, } from 'react-native';
 import uuid from 'react-native-uuid';
 import * as SQLite from 'expo-sqlite';
-
+import { quizScore, incrementScore, setQuizScore } from "./QuizScore";
 var db = SQLite.openDatabase('VisionTalesDB.db');
 
+let result = 0;
 const Quiz = (props) => {
-
-  const [selectedId, setSelectedId] = useState(null);
-  const [demoData, setDemoData] = useState([]);
-
-  // Query for demographic data
-  useEffect(() => {
-    db.transaction((tx) => {
-      tx.executeSql(
-        "SELECT * FROM table_demographics",
-        [],
-        (tx, results) => {
-          console.log("Results: ", results.rows);
-          var temp = [];
-          temp.push(results.rows.item(0));
-          setDemoData(temp);
-        },
-      );
-    });
-  }, []);
-
-
+  if(props.qNum >= props.questions.length){
+    result = quizScore/props.qNum * 100;
+    console.log("Quiz Score: ",result);
+  }
   return (
     <SafeAreaView>
       <Text style={{ marginLeft: 'auto', marginRight: 'auto', fontSize: 20 }}>{props.questions[props.qNum]}</Text>
@@ -35,49 +19,11 @@ const Quiz = (props) => {
           <Pressable onPress={() => {
             // Increment our question counter
             props.customClick()
-
-            // Send the response to AWS
-	    // Removed for admin version to not tamper with results data
-	    /*
-            fetch('https://2jwoowlka2.execute-api.us-east-1.amazonaws.com/responses', {
-              method: 'PUT',
-              headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                response_id: uuid.v4(),
-                quiz_id: props.video_id,
-                question_text: props.questions[props.qNum],
-                Location: demoData[0].location,
-                choices_chosen: key,
-                gender: demoData[0].gender,
-                age: demoData[0].age
-              })
-            })
-              .then(response => response.json())
-              .then((data) => {
-                // Alert.alert(
-                //   'Success',
-                //   'You Have Uploaded Successfully!',
-                //     [
-                //       {
-                //         text: 'Ok',
-                //         onPress: () => navigation.navigate('HomeScreen'),
-                //       },
-                //     ],
-                //     { cancelable: false }
-                // );
-              })
-              .catch((error) => {
-                console.log(error);
-                Alert.alert('Response Failed To Upload');
-              });	*/
-
             if (props.correct[props.qNum][key]) {
               alert("🤗😊🎈 Correct! 😀🥳😇")
+              incrementScore();
             } else {
-              alert("👎😲💩 Incorrect! 🤨😑😭")
+              alert("Incorrect!")
             }
           }
          } style={[styles.button]}>
@@ -86,8 +32,11 @@ const Quiz = (props) => {
         ))
       }
       {(props.qNum >= props.questions.length) &&
-        <Text style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: 10, fontSize: 20 }}> Quiz done! 🥳✅ Please return to previous page 🔙 </Text>
-      }
+      <Text style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: 10, fontSize: 20, textAlign: 'center' }}>
+        Quiz done! 🥳✅ Please return to previous page 🔙{'\n'}
+        <Text>Quiz Score: {result}%</Text>
+      </Text>
+}
     </SafeAreaView>
   );
 };

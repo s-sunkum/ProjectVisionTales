@@ -12,7 +12,6 @@ const ViewQuiz = ({ navigation, route }) => {
     const [correct, setCorrect] = useState(route.params.correct);
 
     const [qNum, setqNum] = useState(0);
-
     /* Not used rn, only used if FlatList is rendered */
     let listViewItemSeparator = () => {
         return (

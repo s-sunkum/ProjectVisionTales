@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import NavButton from "./components/NavButton";
 import MainText from "./components/MainText";
-
 const Donate = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>

@@ -337,10 +337,6 @@ const HomeScreen = ({ navigation }) => {
             Linking.openURL("https://www.cherisheyesight.org/contact")
           }
         />
-        <NavButton
-          title="Change Your Profile"
-          customClick={() => navigation.navigate("DemographicQuiz")}
-        />
       </ScrollView>
     </SafeAreaView>
   );
