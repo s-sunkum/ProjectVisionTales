@@ -6,7 +6,7 @@ import * as SQLite from "expo-sqlite";
 import { useIsFocused } from "@react-navigation/native";
 
 var db = SQLite.openDatabase("VisionTalesDB.db");
-const HomeScreen = ({ navigation }) => {
+const UserHomeScreen = ({ navigation }) => {
   const isFocused = useIsFocused();
   // demoInfoFilled is to check if demographic info is filled up
   const [demoInfoFilled, setDemoInfoFilled] = useState(0);
@@ -290,20 +290,8 @@ const HomeScreen = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView style={{ flex: 1, backgroundColor: "#dbb42b" }}>
         <NavButton
-          title="View User View"
-          customClick={() => navigation.navigate("UserHomeScreen")}
-        />
-        <NavButton
-          title="Add Video"
-          customClick={() => navigation.navigate("AddVideo")}
-        />
-        <NavButton
           title="Vision Tales"
-          customClick={() => navigation.navigate("ViewTopics")}
-        />
-        <NavButton
-          title="Add Quiz"
-          customClick={() => navigation.navigate("AddQuiz")}
+          customClick={() => navigation.navigate("UserViewTopics")}
         />
         <NavButton
           title="Test Your EyeQ"
@@ -345,4 +333,4 @@ const HomeScreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-export default HomeScreen;
+export default UserHomeScreen;
