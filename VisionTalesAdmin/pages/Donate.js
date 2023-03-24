@@ -44,7 +44,7 @@ const Donate = ({ navigation }) => {
             <MainText text="Donate less than $250!" />
             <TouchableOpacity
               onPress={() =>
-                Linking.openURL("https://urlgeni.us/venmo/cherisheyesight")
+                Linking.openURL("https://account.venmo.com/u/cherisheyesight")
               }
             >
               <Image
@@ -52,14 +52,17 @@ const Donate = ({ navigation }) => {
                 source={require("./images/venmologo.png")}
               ></Image>
             </TouchableOpacity>
+            <Text>
+              {"\n"}
+            </Text>
             <TouchableOpacity
               onPress={() =>
                 Linking.openURL("https://cash.app/$cherisheyesight?qr=1")
               }
             >
               <Image
-                style={styles.paypalImage}
-                source={require("./images/paypallogo.png")}
+                style= {styles.paypalImage}
+                source={require("./images/cashapplogo.png")}
               ></Image>
             </TouchableOpacity>
           </View>
