@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FlatList, Text, View, SafeAreaView, Alert } from 'react-native';
 import MainText from './components/MainText';
+import VideoTitleText from './components/VideoTitleText';
 import * as SQLite from 'expo-sqlite';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import NavButton from './components/NavButton';
+import LargeNavButton from "./components/LargeNavButton";
+import SmallNavButton from "./components/SmallNavButton";
 import ViewQuiz from './ViewQuiz';
 import Quiz from './components/QuizQuestion';
 import { quizScore, incrementScore, setQuizScore } from "./components/QuizScore";
@@ -81,7 +84,7 @@ const UserViewVideos = ({ route, navigation }) => {
         style={{
           height: 0.2,
           width: "100%",
-          backgroundColor: "#808080",
+          backgroundColor: "#cccccc",
         }}
       />
     );
@@ -90,17 +93,18 @@ const UserViewVideos = ({ route, navigation }) => {
     return (
       <View
         key={item.video_id}
-        style={{ backgroundColor: "#dbb42b", padding: 20 }}
+        style={{ backgroundColor: '#0e363c', padding: 15, borderRadius: 20, margin: '3%' }}
       >
-	<MainText text={item.title} />
-        <YoutubePlayer 
-	  height={300} 
+  
+	<VideoTitleText text={item.title} />
+  <YoutubePlayer 
+	  height = {200}
 	  play={false}
 	  videoId={item.yt_id}
 	  onChangeState={e => takeQuiz(e, item.yt_id)}
 	/>
 
-        <NavButton
+        <SmallNavButton
           title="Take Quiz"
           customClick={async () => {
             await getQuiz(item.yt_id);

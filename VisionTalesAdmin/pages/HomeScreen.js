@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, Text, SafeAreaView, Alert, Linking } from "react-native";
 import NavButton from "./components/NavButton";
+import LargeNavButton from "./components/LargeNavButton";
+import SmallNavButton from "./components/SmallNavButton";
 import MainText from "./components/MainText";
 import * as SQLite from "expo-sqlite";
 import { useIsFocused } from "@react-navigation/native";
@@ -289,58 +291,31 @@ const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView style={{ flex: 1, backgroundColor: "#dbb42b" }}>
-        <NavButton
+        <LargeNavButton
           title="View User View"
           customClick={() => navigation.navigate("UserHomeScreen")}
         />
+        <Text>
+              {"\n"}
+        </Text>
+
         <NavButton
-          title="Add Video"
-          customClick={() => navigation.navigate("AddVideo")}
-        />
-        <NavButton
-          title="Vision Tales"
+          title="Edit Vision Tales"
           customClick={() => navigation.navigate("ViewTopics")}
         />
         <NavButton
+          title="Edit Test Your EyeQ"
+          customClick={() => navigation.navigate("ViewQuizzes")}
+        />
+        <SmallNavButton
+          title="Add Video"
+          customClick={() => navigation.navigate("AddVideo")}
+        />
+        <SmallNavButton
           title="Add Quiz"
           customClick={() => navigation.navigate("AddQuiz")}
         />
-        <NavButton
-          title="Test Your EyeQ"
-          customClick={() => navigation.navigate("ViewQuizzes")}
-        />
-        <NavButton
-          title="Blog"
-          customClick={() =>
-            Linking.openURL("https://www.cherisheyesight.org/news")
-          }
-        />
-        <NavButton
-          title="Additional Resources"
-          customClick={() =>
-            Linking.openURL("https://www.cherisheyesight.org/resources")
-          }
-        />
-        <NavButton
-          title="Visit Our Homepage!"
-          customClick={() =>
-            Linking.openURL("https://www.cherisheyesight.org/")
-          }
-        />
-        <NavButton
-          title="Donate"
-          customClick={() => navigation.navigate("Donate")}
-        />
-        <NavButton
-          title="SocialEYES"
-          customClick={() => navigation.navigate("SocialEyes")}
-        />
-        <NavButton
-          title="Contact Us"
-          customClick={() =>
-            Linking.openURL("https://www.cherisheyesight.org/contact")
-          }
-        />
+        
       </ScrollView>
     </SafeAreaView>
   );

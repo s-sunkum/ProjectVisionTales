@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, Text, SafeAreaView, Alert, Linking } from "react-native";
 import NavButton from "./components/NavButton";
+import SmallNavButton from "./components/SmallNavButton";
+import LargeNavButton from "./components/LargeNavButton";
 import MainText from "./components/MainText";
 import * as SQLite from "expo-sqlite";
 import { useIsFocused } from "@react-navigation/native";
@@ -289,41 +291,44 @@ const UserHomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView style={{ flex: 1, backgroundColor: "#dbb42b" }}>
-        <NavButton
+        <LargeNavButton
           title="Vision Tales"
           customClick={() => navigation.navigate("UserViewTopics")}
         />
-        <NavButton
+        <LargeNavButton
           title="Test Your EyeQ"
           customClick={() => navigation.navigate("ViewQuizzes")}
         />
-        <NavButton
+        <Text>
+              {"\n"}
+        </Text>
+        <SmallNavButton
           title="Blog"
           customClick={() =>
             Linking.openURL("https://www.cherisheyesight.org/news")
           }
         />
-        <NavButton
+        <SmallNavButton
           title="Additional Resources"
           customClick={() =>
             Linking.openURL("https://www.cherisheyesight.org/resources")
           }
         />
-        <NavButton
+        <SmallNavButton
           title="Visit Our Homepage!"
           customClick={() =>
             Linking.openURL("https://www.cherisheyesight.org/")
           }
         />
-        <NavButton
+        <SmallNavButton
           title="Donate"
           customClick={() => navigation.navigate("Donate")}
         />
-        <NavButton
+        <SmallNavButton
           title="SocialEYES"
           customClick={() => navigation.navigate("SocialEyes")}
         />
-        <NavButton
+        <SmallNavButton
           title="Contact Us"
           customClick={() =>
             Linking.openURL("https://www.cherisheyesight.org/contact")

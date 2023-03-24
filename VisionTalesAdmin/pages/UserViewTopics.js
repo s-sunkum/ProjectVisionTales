@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FlatList, Text, View, SafeAreaView } from "react-native";
 import NavButton from "./components/NavButton";
+import LargeNavButton from "./components/LargeNavButton";
+import SmallNavButton from "./components/SmallNavButton";
 import * as SQLite from "expo-sqlite";
 
 var db = SQLite.openDatabase("VisionTalesDB.db");
@@ -38,7 +40,7 @@ const UserViewTopics = ({ navigation }) => {
   let listItemView = (item) => {
     return (
       <View key={item.topic} style={{ backgroundColor: "#dbb42b", padding: 20 }}>
-        <NavButton
+        <LargeNavButton
           title={item.topic}
           customClick={() =>
             navigation.navigate("UserViewVideos", {

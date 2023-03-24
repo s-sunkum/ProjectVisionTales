@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const NavButton = (props) => {
+const SmallNavButton = (props) => {
   return (
     <TouchableOpacity
       style={styles.button}
@@ -16,18 +16,20 @@ const NavButton = (props) => {
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: '#0e363c',
+    backgroundColor: '#91781c',
     color: '#ffffff',
-    padding: 20,
-    borderRadius: 10,
-    marginTop: 16,
-    marginLeft: "10%",
-    marginRight: "10%",
+    padding: '4%',
+    borderRadius: '15%',
+    marginTop: '4%',
+    marginLeft: "13%",
+    marginRight: "13%",
   },
   text: {
-    color: '#dbb42b',
-    fontSize: 20,
+    color: '#ecebeb',
+    fontSize: 19,
+    fontWeight: '500'
   },
+  
 });
 
-export default NavButton;
+export default SmallNavButton;
