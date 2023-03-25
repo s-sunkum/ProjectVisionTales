@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 
 import * as React from "react";
-import { Button, View, Text, Image, Linking } from "react-native";
+import { Button, View, Text, Image, Linking, TouchableOpacity } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -327,11 +327,13 @@ const App = () => {
             title: "UserHomeScreen", //Set Header Title
             headerTitle: (props) => (
               //title: "Home", //Set Header Title
-              <Image
-                style={{ width: 200, height: 50 }}
-                source={require('./assets/eyesight_logo.png')}
-                resizeMode='contain'
-              />
+              <TouchableOpacity onPress={() => Linking.openURL("https://www.cherisheyesight.org/")}>
+                <Image
+                  style={{ width: 200, height: 50 }}
+                  source={require('./assets/eyesight_logo.png')}
+                  resizeMode='contain'
+                />
+              </TouchableOpacity>
             ),
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
