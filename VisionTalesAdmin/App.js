@@ -32,7 +32,6 @@ import UserHomeScreen from "./pages/UserHomeScreen";
 import UserViewTopics from "./pages/UserViewTopics";
 import UserViewVideos from "./pages/UserViewVideos";
 import UserViewQuizzes from "./pages/UserViewQuizzes";
-import CustomSidebarMenu from './pages/components/CustomSidebarMenu'
 
 
 
@@ -47,10 +46,10 @@ function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
-      <DrawerItem label="Blog" labelStyle={{color: '#dbb42b'}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/news")} />
-      <DrawerItem label="Additional Resources" labelStyle={{color: '#dbb42b'}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/resources")} />
-      <DrawerItem label="Our Homepage" labelStyle={{color: '#dbb42b'}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/")} />
-      <DrawerItem label="Contact Us" labelStyle={{color: '#dbb42b'}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/contact")} />
+      <DrawerItem label="Blog" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/news")} />
+      <DrawerItem label="Additional Resources" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/resources")} />
+      <DrawerItem label="Our Homepage" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/")} />
+      <DrawerItem label="Contact Us" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/contact")} />
     </DrawerContentScrollView>
   );
 }
@@ -60,10 +59,10 @@ function MyDrawer() {
     <Drawer.Navigator
       screenOptions={{
         drawerStyle: {
-          backgroundColor: '#02353c',
+          backgroundColor: bkColor,
         },
         drawerLabelStyle: {
-          color: '#dbb42b',
+          color: headerColor,
         },
         drawerPosition: "right",
         headerShown: false,
