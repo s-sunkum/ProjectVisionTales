@@ -27,7 +27,7 @@ const AddVideo = ({ navigation }) => {
   let refCorrect = useRef([]);
   let questions = [];
 
-  let setInputValue = (index: number, value: string) => {
+  let setInputValue = (index, value) => {
     const inputs = refInputs.current;
     inputs[index] = value;
     setTextValue(value);
@@ -165,7 +165,9 @@ const AddVideo = ({ navigation }) => {
         }
       }
     }
-
+    console.log(refInputs.current);
+    console.log(refAnswers.current);
+    console.log(refCorrect.current);
     fetch("https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/videos", {
       method: 'PUT',
       headers: {

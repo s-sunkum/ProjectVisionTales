@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, Text, View, SafeAreaView, Alert } from 'react-native';
 import NavButton from './components/NavButton';
+import SmallNavButton from "./components/SmallNavButton";
+import LargeNavButton from "./components/LargeNavButton";
 import { quizScore, incrementScore, setQuizScore } from "./components/QuizScore";
-const ViewQuizzes = ({ navigation }) => {
+const UserViewQuizzes = ({ navigation }) => {
   let [flatListItems, setFlatListItems] = useState([]);
   let quizTitle = '';
   let questions = [];
@@ -13,7 +15,6 @@ const ViewQuizzes = ({ navigation }) => {
     try {
       const response = await fetch("https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com//quizzes/titles");
       const json = await response.json();
-      console.log(json);
       setFlatListItems(json);
     } 
     catch (error) {
@@ -85,7 +86,7 @@ const ViewQuizzes = ({ navigation }) => {
       <View
         key={item.title}
         style={{ backgroundColor: '#dbb42b', padding: 20 }}>
-	<NavButton
+	<LargeNavButton
           title={item.title}
           customClick={async () => {
             setQuizScore(0);
@@ -98,35 +99,7 @@ const ViewQuizzes = ({ navigation }) => {
             });
 	  }}
         />
-	<NavButton
-          title="Edit Quiz"
-          customClick={async () => {
-	    await getQuizTitle(item.title);
-	    console.log(quizTitle);
-	    navigation.navigate('EditQuiz',{ 
-	      title: quizTitle,
-	      questions: questions,
-	      choices: choices,
-	      correct: correct
-	    });
-	  }}
-        />
-        <NavButton
-          title="Delete Quiz"
-          customClick={() => {
-	    Alert.alert(
-	      "Delete",
-              `Do you want to delete: ${item.title}?`,
-              [
-                {
-                  text: 'Ok',
-                  onPress: () => {deleteQuizTitle(item.title)},
-                },
-              ],
-              { cancelable: true }
-            )
-	  }}
-        />
+        
       </View>
     );
   };
@@ -149,4 +122,4 @@ const ViewQuizzes = ({ navigation }) => {
   );
 };
 
-export default ViewQuizzes;
+export default UserViewQuizzes;

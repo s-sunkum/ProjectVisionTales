@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, Text, SafeAreaView, Alert, Linking } from "react-native";
 import NavButton from "./components/NavButton";
-import LargeNavButton from "./components/LargeNavButton";
 import SmallNavButton from "./components/SmallNavButton";
+import LargeNavButton from "./components/LargeNavButton";
 import MainText from "./components/MainText";
 import * as SQLite from "expo-sqlite";
 import { useIsFocused } from "@react-navigation/native";
 
 var db = SQLite.openDatabase("VisionTalesDB.db");
-const HomeScreen = ({ navigation }) => {
+const UserHomeScreen = ({ navigation }) => {
   const isFocused = useIsFocused();
   // demoInfoFilled is to check if demographic info is filled up
   const [demoInfoFilled, setDemoInfoFilled] = useState(0);
@@ -292,32 +292,50 @@ const HomeScreen = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView style={{ flex: 1, backgroundColor: "#dbb42b" }}>
         <LargeNavButton
-          title="View User View"
-          customClick={() => navigation.navigate("UserHomeScreen")}
+          title="Vision Tales"
+          customClick={() => navigation.navigate("UserViewTopics")}
+        />
+        <LargeNavButton
+          title="Test Your EyeQ"
+          customClick={() => navigation.navigate("UserViewQuizzes")}
         />
         <Text>
               {"\n"}
         </Text>
-
-        <NavButton
-          title="Edit Vision Tales"
-          customClick={() => navigation.navigate("ViewTopics")}
-        />
-        <NavButton
-          title="Edit Test Your EyeQ"
-          customClick={() => navigation.navigate("ViewQuizzes")}
+        <SmallNavButton
+          title="Blog"
+          customClick={() =>
+            Linking.openURL("https://www.cherisheyesight.org/news")
+          }
         />
         <SmallNavButton
-          title="Add Video"
-          customClick={() => navigation.navigate("AddVideo")}
+          title="Additional Resources"
+          customClick={() =>
+            Linking.openURL("https://www.cherisheyesight.org/resources")
+          }
         />
         <SmallNavButton
-          title="Add Quiz"
-          customClick={() => navigation.navigate("AddQuiz")}
+          title="Visit Our Homepage!"
+          customClick={() =>
+            Linking.openURL("https://www.cherisheyesight.org/")
+          }
         />
-        
+        <SmallNavButton
+          title="Donate"
+          customClick={() => navigation.navigate("Donate")}
+        />
+        <SmallNavButton
+          title="SocialEYES"
+          customClick={() => navigation.navigate("SocialEyes")}
+        />
+        <SmallNavButton
+          title="Contact Us"
+          customClick={() =>
+            Linking.openURL("https://www.cherisheyesight.org/contact")
+          }
+        />
       </ScrollView>
     </SafeAreaView>
   );
 };
-export default HomeScreen;
+export default UserHomeScreen;

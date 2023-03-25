@@ -24,7 +24,7 @@ const EditVideoQuiz = ({ route, navigation }) => {
   let [isCorrect, setIsCorrect] = useState(false);
   let questions = [];
 
-  let setInputValue = (index: number, value: string) => {
+  let setInputValue = (index, value) => {
     const inputs = refInputs.current;
     inputs[index] = value;
     setTextValue(value);

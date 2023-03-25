@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import React from "react";
 // FlatList, SafeAreaView, StatusBar, , Text,
 import {
@@ -31,6 +31,7 @@ const EditVideo = ({ navigation, route }) => {
   let [videoTopic, setVideoTopic] = useState(route.params.topic);
   let [videoURL, setVideoURL] = useState(route.params.url);
   let [videoYtId, setVideoYtId] = useState(route.params.yt_id);
+  var videoQuiz = null;
 
   // let updateAllStates = (videoTitle, videoTopic, videoURL, videoYtId) => {
   //   setVideoTitle(videoTitle);
@@ -46,7 +47,22 @@ const EditVideo = ({ navigation, route }) => {
   //   updateAllStates(videoTitle, videoTopic, videoURL, videoYtId);
   // }, []);
 
-  
+  async function getQuiz(yt_id) {
+    try {
+      const response = await fetch(
+        "https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/videos"
+      );
+      const json = await response.json();
+      for (let i = 0; i < json.length; i++) {
+        if(json[i].video_id == yt_id){
+          videoQuiz = json[i].quiz;
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   let editVideo = () => {
     // console.log(videoTitle, videoTopic, videoURL, videoYtId, video_id);
 
@@ -59,50 +75,40 @@ const EditVideo = ({ navigation, route }) => {
       return;
     }
 
-    db.transaction((tx) => {
-      console.log("here" + videoYtId);
-      console.log(videoYtId);
-      console.log(videoTitle);
-      console.log(videoTopic);
-      console.log(videoURL);
-      
-
-      // Execute local change
-      tx.executeSql(
-        "UPDATE table_video set title=?, topic=? , url=?, yt_id=? where video_id=?",
-        [videoTitle, videoTopic, videoURL, videoYtId, video_id],
-        (tx, results) => {
-          if (results.rowsAffected > 0) {
-            //Push change to AWS database
-            fetch("https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/videos", {
-              method: 'PUT',
-              headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                video_id: videoYtId,
-                title: videoTitle,
-                topic: videoTopic,
-                yt_url: videoURL
-              })
-            });
-            
-            Alert.alert(
-              "Success",
-              "User updated successfully",
-              [
-                {
-                  text: "Ok",
-                  onPress: () => navigation.navigate("HomeScreen"),
-                },
-              ],
-              { cancelable: false }
-            );
-          } else alert("Updation Failed");
-        }
+    (async () => {
+      await getQuiz(videoYtId);
+      fetch("https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/videos", {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            video_id: videoYtId,
+            quiz: videoQuiz,
+            title: videoTitle,
+            topic: videoTopic,
+        }),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        Alert.alert(
+          "Success",
+          "You Have Updated Successfully!",
+          [
+            {
+              text: "Ok",
+              onPress: () => navigation.navigate("HomeScreen"),
+            },
+          ],
+          { cancelable: false }
       );
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+        Alert.alert("Update Failed");
+      }); 
+    })();
   };
 
   return (
