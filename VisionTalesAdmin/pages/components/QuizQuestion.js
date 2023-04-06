@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, FlatList, Text, StatusBar, Pressable, StyleSheet, } from 'react-native';
-import uuid from 'react-native-uuid';
 import * as SQLite from 'expo-sqlite';
+import uuid from 'react-native-uuid';
 import { quizScore, incrementScore, setQuizScore } from "./QuizScore";
+import {name, age, gender, country} from './UserSession'
 var db = SQLite.openDatabase('VisionTalesDB.db');
 
+const quizDataUrl = "https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/quizdata"
 let result = 0;
 const Quiz = (props) => {
   if(props.qNum >= props.questions.length){
     result = quizScore/props.qNum * 100;
-    console.log("Quiz Score: ",result);
+    const requestBody = {
+      quiz_id: uuid.v4(),
+      score: result.toString(),
+      origin: country,
+      age: age,
+      gender: gender
+  }
+    console.log("Quiz Score: ",result,uuid.v4());
   }
   return (
     <SafeAreaView>
