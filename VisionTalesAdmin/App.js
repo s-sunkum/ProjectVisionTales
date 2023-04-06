@@ -21,6 +21,11 @@ import EditVideoQuiz from "./pages/EditVideoQuiz";
 import Donate from "./pages/Donate";
 import ViewQuiz from "./pages/ViewQuiz";
 import SocialEyes from "./pages/SocialEyes";
+import UserHomeScreen from "./pages/UserHomeScreen";
+import UserViewTopics from "./pages/UserViewTopics";
+import UserViewVideos from "./pages/UserViewVideos";
+import UserViewQuizzes from "./pages/UserViewQuizzes";
+import Analytics from "./pages/Analytics";
 
 const Stack = createStackNavigator();
 
@@ -261,6 +266,80 @@ const App = () => {
           component={SocialEyes}
           options={{
             title: "SocialEYES", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+        <Stack.Screen
+          name="UserHomeScreen"
+          component={UserHomeScreen}
+          options={{
+            title: "UserHomeScreen", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="UserViewTopics"
+          component={UserViewTopics}
+          options={{
+            title: "UserViewTopics", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="UserViewVideos"
+          component={UserViewVideos}
+          options={{
+            title: "UserViewVideos", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+        <Stack.Screen
+          name="UserViewQuizzes"
+          component={UserViewQuizzes}
+          options={{
+            title: "UserViewQuizzes", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+          
+          
+        />
+        <Stack.Screen
+          name="Analytics"
+          component={Analytics}
+          options={{
+            title: "View Analytics", //Set Header Title
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
             },

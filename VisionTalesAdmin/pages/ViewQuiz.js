@@ -45,7 +45,11 @@ const ViewQuiz = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            
             <View style={{ flex: 1, backgroundColor: '#dbb42b'}}>
+            <Text>
+              {"\n"}
+            </Text>
             {choices && correct && questions && (
                 <Quiz
                     qNum={qNum}

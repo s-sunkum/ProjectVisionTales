@@ -18,15 +18,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#0e363c',
     color: '#ffffff',
-    padding: 20,
-    borderRadius: 10,
-    marginTop: 16,
+    padding: 25,
+    borderRadius: '15%',
+    marginTop: '8%',
     marginLeft: "10%",
     marginRight: "10%",
   },
   text: {
     color: '#dbb42b',
-    fontSize: 20,
+    fontSize: 24,
+    fontWeight: '700'
   },
 });
 

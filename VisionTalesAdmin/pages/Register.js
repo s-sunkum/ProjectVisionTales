@@ -66,41 +66,50 @@ const Register = ({ navigation }) => {
                 onChangeText={
                   (name) => setName(name)
                 }
-                style={{ padding: 10 }}
+                style={{ padding: 10, backgroundColor: "#ffffff", margin: 2 }}
             />
             <MainTextInput
                 placeholder="Email"
                 onChangeText={
                   (email) => setEmail(email)
                 }
-                style={{ padding: 10 }}
+                style={{ padding: 10, backgroundColor: "#ffffff", margin: 2  }}
             />
             <MainTextInput
                 placeholder="Enter Username"
                 onChangeText={
                   (username) => setUsername(username)
                 }
-                style={{ padding: 10 }}
+                style={{ padding: 10, backgroundColor: "#ffffff", margin: 2  }}
             />
             <MainTextInput
                 placeholder="Enter Password"
                 onChangeText={
                   (password) => setPassword(password)
                 }
-                style={{ padding: 10 }}
+                style={{ padding: 10, backgroundColor: "#ffffff", margin: 2 }}
             />
+            <Text>
+              {"\n"}
+            </Text>
             <SelectList 
               setSelected={(location) => setLocation(location)} 
               data={countryData} 
               save="value"
               style={{ padding: 10 }}
             />
+            <Text>
+              {"\n"}
+            </Text>
             <SelectList 
               setSelected={(age) => setAge(age)} 
               data={ageRanges} 
               save="value"
               style={{ padding: 10 }}
             />
+            <Text>
+              {"\n"}
+            </Text>
             <SelectList 
               setSelected={(gender) => setGender(gender)} 
               data={genderChoices} 

@@ -4,6 +4,7 @@ import * as SQLite from 'expo-sqlite';
 import uuid from 'react-native-uuid';
 import { quizScore, incrementScore, setQuizScore } from "./QuizScore";
 import {name, age, gender, country} from './UserSession'
+import axios from "axios";
 var db = SQLite.openDatabase('VisionTalesDB.db');
 
 const quizDataUrl = "https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/quizdata"
@@ -17,12 +18,37 @@ const Quiz = (props) => {
       origin: country,
       age: age,
       gender: gender
-  }
-    console.log("Quiz Score: ",result,uuid.v4());
+    }
+    
+    axios.post(quizDataUrl,requestBody).then(response => {
+      
+    }).catch(error => {
+      if(error.response.status === 401 || error.response.status === 403){
+        alert(error.response.data.message);
+      }else{
+        alert("Network Error");
+      }
+    })
   }
   return (
     <SafeAreaView>
-      <Text style={{ marginLeft: 'auto', marginRight: 'auto', fontSize: 20 }}>{props.questions[props.qNum]}</Text>
+      <Text 
+        style={{ 
+          padding: 25,
+          marginTop: '8%',
+          marginLeft: "10%",
+          marginRight: "10%",
+          color: '#ecebeb',
+          fontSize: 24,
+          fontWeight: '700', 
+          backgroundColor: '#91781c'}}>
+
+          {props.questions[props.qNum]}
+
+      </Text>
+      <Text>
+              {"\n"}
+            </Text>
       {props.choices[props.qNum] &&
         props.choices[props.qNum].map((item, key) => (
           <Pressable onPress={() => {
