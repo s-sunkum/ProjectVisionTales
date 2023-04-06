@@ -299,41 +299,6 @@ const UserHomeScreen = ({ navigation }) => {
           title="Test Your EyeQ"
           customClick={() => navigation.navigate("UserViewQuizzes")}
         />
-        <Text>
-              {"\n"}
-        </Text>
-        <SmallNavButton
-          title="Blog"
-          customClick={() =>
-            Linking.openURL("https://www.cherisheyesight.org/news")
-          }
-        />
-        <SmallNavButton
-          title="Additional Resources"
-          customClick={() =>
-            Linking.openURL("https://www.cherisheyesight.org/resources")
-          }
-        />
-        <SmallNavButton
-          title="Visit Our Homepage!"
-          customClick={() =>
-            Linking.openURL("https://www.cherisheyesight.org/")
-          }
-        />
-        <SmallNavButton
-          title="Donate"
-          customClick={() => navigation.navigate("Donate")}
-        />
-        <SmallNavButton
-          title="SocialEYES"
-          customClick={() => navigation.navigate("SocialEyes")}
-        />
-        <SmallNavButton
-          title="Contact Us"
-          customClick={() =>
-            Linking.openURL("https://www.cherisheyesight.org/contact")
-          }
-        />
       </ScrollView>
     </SafeAreaView>
   );
