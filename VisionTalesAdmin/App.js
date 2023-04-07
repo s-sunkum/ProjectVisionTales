@@ -32,6 +32,7 @@ import UserHomeScreen from "./pages/UserHomeScreen";
 import UserViewTopics from "./pages/UserViewTopics";
 import UserViewVideos from "./pages/UserViewVideos";
 import UserViewQuizzes from "./pages/UserViewQuizzes";
+import UserAllVideos from "./pages/UserAllVideos";
 import Analytics from "./pages/Analytics";
 
 
@@ -73,6 +74,7 @@ function MyDrawer() {
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen name="Home" component={UserHomeScreen}/>
+      <Drawer.Screen name="Test Your EyeQ" component={UserViewQuizzes}/>
       <Drawer.Screen name="Donate" component={Donate} />
       <Drawer.Screen name="SocialEYES" component={SocialEyes} />
     </Drawer.Navigator>
@@ -375,6 +377,7 @@ const App = () => {
             },
           }}
         />
+
         <Stack.Screen
           name="UserViewQuizzes"
           component={UserViewQuizzes}
@@ -396,6 +399,21 @@ const App = () => {
           component={Analytics}
           options={{
             title: "View Analytics", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="UserAllVideos"
+          component={UserAllVideos}
+          options={{
+            title: "VisionTales", //Set Header Title
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
             },
