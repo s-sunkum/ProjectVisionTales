@@ -105,7 +105,7 @@ const UserViewVideos = ({ route, navigation }) => {
 	/>
 
         <SmallNavButton
-          title="Take Quiz"
+          title="What Do You Know?"
           customClick={async () => {
             await getQuiz(item.yt_id);
             setQuizScore(0);

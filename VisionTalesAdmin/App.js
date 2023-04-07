@@ -1,10 +1,17 @@
 import "react-native-gesture-handler";
 
 import * as React from "react";
-import { Button, View, Text, Image } from "react-native";
+import { Button, View, Text, Image, Linking, TouchableOpacity } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
+import 'react-native-gesture-handler';
 
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -27,11 +34,50 @@ import UserViewVideos from "./pages/UserViewVideos";
 import UserViewQuizzes from "./pages/UserViewQuizzes";
 import Analytics from "./pages/Analytics";
 
-const Stack = createStackNavigator();
+
 
 //the colors that control what the background of the app looks like and what the top header of the app looks like
 const bkColor = "#02353c";
 const headerColor = "#dbb42b";
+
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem label="Blog" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/news")} />
+      <DrawerItem label="Additional Resources" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/resources")} />
+      <DrawerItem label="Our Homepage" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/")} />
+      <DrawerItem label="Contact Us" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/contact")} />
+    </DrawerContentScrollView>
+  );
+}
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: bkColor,
+        },
+        drawerLabelStyle: {
+          color: headerColor,
+        },
+        drawerPosition: "right",
+        headerShown: false,
+        swipeEdgeWidth: 150,
+        
+      }}
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    >
+      <Drawer.Screen name="Home" component={UserHomeScreen}/>
+      <Drawer.Screen name="Donate" component={Donate} />
+      <Drawer.Screen name="SocialEYES" component={SocialEyes} />
+    </Drawer.Navigator>
+  );
+}
 
 const App = () => {
   return (
@@ -277,9 +323,19 @@ const App = () => {
         />
         <Stack.Screen
           name="UserHomeScreen"
-          component={UserHomeScreen}
+          component={MyDrawer}
           options={{
             title: "UserHomeScreen", //Set Header Title
+            headerTitle: (props) => (
+              //title: "Home", //Set Header Title
+              <TouchableOpacity onPress={() => Linking.openURL("https://www.cherisheyesight.org/")}>
+                <Image
+                  style={{ width: 200, height: 50 }}
+                  source={require('./assets/eyesight_logo.png')}
+                  resizeMode='contain'
+                />
+              </TouchableOpacity>
+            ),
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
             },
