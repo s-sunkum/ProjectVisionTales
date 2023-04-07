@@ -47,6 +47,9 @@ const App = () => {
                 style={{ width: 200, height: 50 }}
                 source={require('./assets/eyesight_logo.png')}
                 resizeMode='contain'
+                customClick={() =>
+                  Linking.openURL("https://www.cherisheyesight.org/")
+                }
               />
             ),
             headerStyle: {

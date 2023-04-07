@@ -49,7 +49,7 @@ const Quiz = (props) => {
       }
       {(props.qNum >= props.questions.length) &&
       <Text style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: 10, fontSize: 20, textAlign: 'center' }}>
-        Quiz done! 🥳✅ Please return to previous page 🔙{'\n'}
+        Quiz done! 🥳✅ {'\n'}
         <Text>Quiz Score: {result}%</Text>
       </Text>
 }
