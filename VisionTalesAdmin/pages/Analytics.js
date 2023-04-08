@@ -80,7 +80,7 @@ const Analytics = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <ScrollView style={{ flex: 1, backgroundColor: "#dbb42b" }}>
-            <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold', marginBottom: 20 }}>Score and Age Averages</Text>
+            <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold', marginBottom: 20 }}>Age and Score Averages</Text>
             {chartDataAge &&
             <BarChart
                 data={chartDataAge}
@@ -96,6 +96,7 @@ const Analytics = ({ navigation }) => {
       
             />
             }
+            
             <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold', marginBottom: 20 }}>Gender and Score Averages</Text>
             {chartDataGender &&
             <BarChart
