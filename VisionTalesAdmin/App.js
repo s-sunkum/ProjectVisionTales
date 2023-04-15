@@ -60,20 +60,26 @@ function MyDrawer() {
   return (
     <Drawer.Navigator
       screenOptions={{
+        headerStyle: {
+          backgroundColor: bkColor,
+        },
+        headerTitleStyle: {
+          color: headerColor,
+        },
         drawerStyle: {
           backgroundColor: bkColor,
         },
         drawerLabelStyle: {
           color: headerColor,
         },
-        drawerPosition: "right",
-        headerShown: false,
+        drawerPosition: "left",
+        headerShown: true,
         swipeEdgeWidth: 150,
         
       }}
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
-      <Drawer.Screen name="Home" component={UserHomeScreen}/>
+      <Drawer.Screen name="Vision Tales" component={UserHomeScreen}/>
       <Drawer.Screen name="Test Your EyeQ" component={UserViewQuizzes}/>
       <Drawer.Screen name="Donate" component={Donate} />
       <Drawer.Screen name="SocialEYES" component={SocialEyes} />
