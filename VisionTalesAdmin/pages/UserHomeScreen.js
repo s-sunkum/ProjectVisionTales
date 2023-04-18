@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Text, SafeAreaView, Alert, Linking } from "react-native";
+import { ScrollView, Text, FlatList, View, SafeAreaView, Alert, Linking } from "react-native";
 import NavButton from "./components/NavButton";
+import VideoTitleText from './components/VideoTitleText';
 import SmallNavButton from "./components/SmallNavButton";
+import YoutubePlayer from 'react-native-youtube-iframe';
 import LargeNavButton from "./components/LargeNavButton";
 import MainText from "./components/MainText";
+import ViewQuiz from './ViewQuiz';
+import Quiz from './components/QuizQuestion';
+import { quizScore, incrementScore, setQuizScore } from "./components/QuizScore";
 import * as SQLite from "expo-sqlite";
 import { useIsFocused } from "@react-navigation/native";
 
@@ -288,18 +293,115 @@ const UserHomeScreen = ({ navigation }) => {
     startup();
   }, [isFocused]);
 
+  let [flatListItems, setFlatListItems] = useState([]);
+  let questions = [];
+  let choices = [];
+  let correct = [];
+
+  async function getQuiz(yt_id) {
+    try {
+      const response = await fetch(
+        "https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/videos"
+      );
+      const json = await response.json();
+      var videoQuiz = null;
+      for (let i = 0; i < json.length; i++) {
+        if(json[i].video_id == yt_id){
+          videoQuiz = json[i];
+        }
+      }
+      questions = videoQuiz.quiz.questions;
+      choices = videoQuiz.quiz.choices;
+      correct = videoQuiz.quiz.correct;
+
+      console.log("made call in View Video Quiz: ", questions.length);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function takeQuiz(e, yt_id) {
+    if (e === "ended") {
+      await getQuiz(yt_id);
+      if (questions.length > 0) {
+	Alert.alert("Quiz time! Please take the quiz.");
+        navigation.navigate("ViewQuiz", {
+          id: yt_id,
+          questions: questions,
+          choices: choices,
+          correct: correct,
+        });
+      }
+    }
+  }
+
+  useEffect(() => {
+    db.transaction((tx) => {
+      tx.executeSql('SELECT * FROM table_video', [], (tx, results) => {
+        var temp = [];
+        for (let i = 0; i < results.rows.length; ++i) {
+         temp.push(results.rows.item(i));
+         setFlatListItems(temp);
+        }
+        });
+      }
+    )
+  }, []);
+
+  let listViewItemSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 0.2,
+          width: "100%",
+          backgroundColor: "#cccccc",
+        }}
+      />
+    );
+  };
+  let listItemView = (item) => {
+    return (
+      <View
+        key={item.video_id}
+        style={{ backgroundColor: '#0e363c', padding: 15, borderRadius: 20, margin: '3%' }}
+      >
+  
+	<VideoTitleText text={item.title} />
+  <YoutubePlayer 
+	  height = {200}
+	  play={false}
+	  videoId={item.yt_id}
+	  onChangeState={e => takeQuiz(e, item.yt_id)}
+	/>
+
+        <SmallNavButton
+          title="What Do You Know?"
+          customClick={async () => {
+            await getQuiz(item.yt_id);
+            setQuizScore(0);
+            navigation.navigate("ViewQuiz", {
+              id: item.yt_id,
+              questions: questions,
+              choices: choices,
+              correct: correct,
+            });
+          }}
+        />
+      </View>
+    );
+  };
+
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView style={{ flex: 1, backgroundColor: "#dbb42b" }}>
-        <LargeNavButton
-          title="Vision Tales"
-          customClick={() => navigation.navigate("UserViewTopics")}
+      <View style={{ flex: 1, backgroundColor: "#dbb42b" }}>
+        <FlatList
+          data={flatListItems}
+          ItemSeparatorComponent={listViewItemSeparator}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => listItemView(item)}
         />
-        <LargeNavButton
-          title="Test Your EyeQ"
-          customClick={() => navigation.navigate("UserViewQuizzes")}
-        />
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
