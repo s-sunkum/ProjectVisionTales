@@ -28,6 +28,7 @@ import EditVideoQuiz from "./pages/EditVideoQuiz";
 import Donate from "./pages/Donate";
 import ViewQuiz from "./pages/ViewQuiz";
 import SocialEyes from "./pages/SocialEyes";
+import Resources from "./pages/Resources"
 import UserHomeScreen from "./pages/UserHomeScreen";
 import UserViewTopics from "./pages/UserViewTopics";
 import UserViewVideos from "./pages/UserViewVideos";
@@ -49,7 +50,6 @@ function CustomDrawerContent(props) {
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
       <DrawerItem label="Blog" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/news")} />
-      <DrawerItem label="Additional Resources" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/resources")} />
       <DrawerItem label="Our Homepage" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/")} />
       <DrawerItem label="Contact Us" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/contact")} />
     </DrawerContentScrollView>
@@ -60,23 +60,30 @@ function MyDrawer() {
   return (
     <Drawer.Navigator
       screenOptions={{
+        headerStyle: {
+          backgroundColor: bkColor,
+        },
+        headerTitleStyle: {
+          color: headerColor,
+        },
         drawerStyle: {
           backgroundColor: bkColor,
         },
         drawerLabelStyle: {
           color: headerColor,
         },
-        drawerPosition: "right",
-        headerShown: false,
+        drawerPosition: "left",
+        headerShown: true,
         swipeEdgeWidth: 150,
         
       }}
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
-      <Drawer.Screen name="Home" component={UserHomeScreen}/>
+      <Drawer.Screen name="Vision Tales" component={UserHomeScreen}/>
       <Drawer.Screen name="Test Your EyeQ" component={UserViewQuizzes}/>
       <Drawer.Screen name="Donate" component={Donate} />
       <Drawer.Screen name="SocialEYES" component={SocialEyes} />
+      <Drawer.Screen name="Additional Resources" component={Resources} />
     </Drawer.Navigator>
   );
 }
