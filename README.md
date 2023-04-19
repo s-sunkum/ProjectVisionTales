@@ -17,6 +17,11 @@ Vision Tales is an application that will display videos created by Cherish Eyesi
   ```sh
   npm install npm@latest -g
   ```
+  If command above does not work try:
+  ```sh
+  npm install --f
+  ```
+  
 * expo-cli
   ```sh
   npm install --global expo-cli
@@ -58,7 +63,7 @@ A. Run the the Admin version of the app
    A new page like the picture below would show up 
    ![image](https://user-images.githubusercontent.com/44754659/163910463-ff543e8f-3ae2-41ad-8aca-dcdacaaa62db.png)
    
-   PLEASE Remeber to change CONNECTION to 'Tunnel'
+   PLEASE Remember to change CONNECTION to 'Tunnel'
 
 5. Open it on your phone 
 
@@ -74,32 +79,12 @@ A. Run the the Admin version of the app
 B. To end the runing app
  press CTRL + C
 
-C. Run the the Ueser version of the app
-
-1. Go inside of the 'VisionTalesAdmin' folder by using command 'cd [relative path to the folder]'
+### Publishing to Expo
+  Enter
   ```sh
-   cd VisionTales
-   ```
-2. Install dependency packages
-   ```sh
-   npm install
-   ```
-3. run the native application
-    ```sh
-   expo start
-   ```
-4. Run the server
-   Copy the address to your searching engine
-   (For example: http://localhost:19002)
-   A new page like the picture below would show up 
-   ![image](https://user-images.githubusercontent.com/44754659/163910463-ff543e8f-3ae2-41ad-8aca-dcdacaaa62db.png)
-   
-   PLEASE Remeber to change CONNECTION to 'Tunnel'
+  expo publish
+  ```
+* Below is the information for the username and password:
+  * Username: ```visiontales```
+  * Password: ```ProjectTales123```
 
-5. Open it on your phone 
-
-  scan the QR code in the web page with your device camera
-  Then the app should be opened on your device
-  
-<p align="right">(<a href="#top">back to top</a>)</p>
-    
