@@ -28,10 +28,12 @@ import EditVideoQuiz from "./pages/EditVideoQuiz";
 import Donate from "./pages/Donate";
 import ViewQuiz from "./pages/ViewQuiz";
 import SocialEyes from "./pages/SocialEyes";
+import Resources from "./pages/Resources"
 import UserHomeScreen from "./pages/UserHomeScreen";
 import UserViewTopics from "./pages/UserViewTopics";
 import UserViewVideos from "./pages/UserViewVideos";
 import UserViewQuizzes from "./pages/UserViewQuizzes";
+import UserAllVideos from "./pages/UserAllVideos";
 import Analytics from "./pages/Analytics";
 
 
@@ -48,7 +50,6 @@ function CustomDrawerContent(props) {
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
       <DrawerItem label="Blog" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/news")} />
-      <DrawerItem label="Additional Resources" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/resources")} />
       <DrawerItem label="Our Homepage" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/")} />
       <DrawerItem label="Contact Us" labelStyle={{color: headerColor}} onPress={() => Linking.openURL("https://www.cherisheyesight.org/contact")} />
     </DrawerContentScrollView>
@@ -59,22 +60,30 @@ function MyDrawer() {
   return (
     <Drawer.Navigator
       screenOptions={{
+        headerStyle: {
+          backgroundColor: bkColor,
+        },
+        headerTitleStyle: {
+          color: headerColor,
+        },
         drawerStyle: {
           backgroundColor: bkColor,
         },
         drawerLabelStyle: {
           color: headerColor,
         },
-        drawerPosition: "right",
-        headerShown: false,
+        drawerPosition: "left",
+        headerShown: true,
         swipeEdgeWidth: 150,
         
       }}
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
-      <Drawer.Screen name="Home" component={UserHomeScreen}/>
+      <Drawer.Screen name="Vision Tales" component={UserHomeScreen}/>
+      <Drawer.Screen name="Test Your EyeQ" component={UserViewQuizzes}/>
       <Drawer.Screen name="Donate" component={Donate} />
       <Drawer.Screen name="SocialEYES" component={SocialEyes} />
+      <Drawer.Screen name="Additional Resources" component={Resources} />
     </Drawer.Navigator>
   );
 }
@@ -375,6 +384,7 @@ const App = () => {
             },
           }}
         />
+
         <Stack.Screen
           name="UserViewQuizzes"
           component={UserViewQuizzes}
@@ -396,6 +406,21 @@ const App = () => {
           component={Analytics}
           options={{
             title: "View Analytics", //Set Header Title
+            headerStyle: {
+              backgroundColor: bkColor, //Set Header color
+            },
+            headerTintColor: headerColor, //Set Header text color
+            headerTitleStyle: {
+              fontWeight: "bold", //Set Header text style
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="UserAllVideos"
+          component={UserAllVideos}
+          options={{
+            title: "VisionTales", //Set Header Title
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
             },

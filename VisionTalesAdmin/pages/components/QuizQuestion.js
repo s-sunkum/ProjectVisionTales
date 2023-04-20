@@ -10,7 +10,7 @@ var db = SQLite.openDatabase('VisionTalesDB.db');
 const quizDataUrl = "https://9ncfhn4qea.execute-api.us-east-2.amazonaws.com/quizdata"
 let result = 0;
 const Quiz = (props) => {
-  if(props.qNum >= props.questions.length){
+  if(props.qNum >= props.questions.length && quizScore){
     result = quizScore/props.qNum * 100;
     const requestBody = {
       quiz_id: uuid.v4(),

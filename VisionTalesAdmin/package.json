@@ -26,7 +26,7 @@
     "native-base": "^3.4.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-native": "0.70.5",
+    "react-native": "0.70.8",
     "react-native-chart-kit": "^6.12.0",
     "react-native-countries": "^1.0.3",
     "react-native-country-list": "^1.0.10",

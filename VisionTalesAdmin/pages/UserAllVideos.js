@@ -12,11 +12,8 @@ import Quiz from './components/QuizQuestion';
 import { quizScore, incrementScore, setQuizScore } from "./components/QuizScore";
 var db = SQLite.openDatabase("VisionTalesDB.db");
 
-const UserViewVideos = ({ route, navigation }) => {
+const UserAllVideos = ({ route, navigation }) => {
   
-  const topic = route.params.topic;
-  // const yt_id = route.params.yt_id;
-  // const title = route.params.title;
   let [flatListItems, setFlatListItems] = useState([]);
   let questions = [];
   let choices = [];
@@ -61,22 +58,15 @@ const UserViewVideos = ({ route, navigation }) => {
 
   useEffect(() => {
     db.transaction((tx) => {
-      tx.executeSql(
-        "SELECT * FROM table_video WHERE topic=?",
-        [topic],
-        (tx, results) => {
-          console.log("RESULTS\n" + results);
-          var temp = [];
-          for (let i = 0; i < results.rows.length; ++i)
-            temp.push(results.rows.item(i));
-          
-          setFlatListItems(temp);
-        },
-        (tx, errors) => {
-          //console.log("ERRORS:\n" + errors);
+      tx.executeSql('SELECT * FROM table_video', [], (tx, results) => {
+        var temp = [];
+        for (let i = 0; i < results.rows.length; ++i) {
+         temp.push(results.rows.item(i));
+         setFlatListItems(temp);
         }
-      );
-    });
+        });
+      }
+    )
   }, []);
 
   let listViewItemSeparator = () => {
@@ -136,4 +126,4 @@ const UserViewVideos = ({ route, navigation }) => {
   );
 };
 
-export default UserViewVideos;
+export default UserAllVideos;
