@@ -84,7 +84,6 @@ B. To end the runing app
   ```sh
   expo publish
   ```
-* Below is the information for the username and password:
-  * Username: ```visiontales```
-  * Password: ```ProjectTales123```
+* Note: Username and Password and further information can be found in project documentation
+
 
