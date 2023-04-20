@@ -33,7 +33,6 @@ import UserHomeScreen from "./pages/UserHomeScreen";
 import UserViewTopics from "./pages/UserViewTopics";
 import UserViewVideos from "./pages/UserViewVideos";
 import UserViewQuizzes from "./pages/UserViewQuizzes";
-import UserAllVideos from "./pages/UserAllVideos";
 import Analytics from "./pages/Analytics";
 
 
@@ -406,21 +405,6 @@ const App = () => {
           component={Analytics}
           options={{
             title: "View Analytics", //Set Header Title
-            headerStyle: {
-              backgroundColor: bkColor, //Set Header color
-            },
-            headerTintColor: headerColor, //Set Header text color
-            headerTitleStyle: {
-              fontWeight: "bold", //Set Header text style
-            },
-          }}
-        />
-
-        <Stack.Screen
-          name="UserAllVideos"
-          component={UserAllVideos}
-          options={{
-            title: "VisionTales", //Set Header Title
             headerStyle: {
               backgroundColor: bkColor, //Set Header color
             },
